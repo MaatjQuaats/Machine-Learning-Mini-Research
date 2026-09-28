@@ -8,7 +8,7 @@ Place these files in the same folder:
 
 ```text
 heart.csv
-paper_reproduction_and_extension(4).ipynb
+paper_reproduction_and_extension.ipynb
 README.md
 ```
 
@@ -32,7 +32,7 @@ The saved results were generated with scikit-learn 1.8.0 and XGBoost 3.4.1. Othe
 
 1. Put `heart.csv` beside the notebook.
 2. Open the folder in a terminal and run `jupyter lab`.
-3. Open `paper_reproduction_and_extension(4).ipynb`.
+3. Open `paper_reproduction_and_extension.ipynb`.
 4. Select a Python kernel with the packages above installed.
 5. Choose **Kernel → Restart Kernel and Run All Cells**. Run the cells from top to bottom; later cells use variables produced earlier.
 
@@ -42,7 +42,7 @@ The notebook displays tables and plots directly. The plots are not saved automat
 
 ### Part 1: Reproduce the paper's classifiers
 
-The dataset contains 1,025 rows, 13 input features, and no missing cells. The notebook uses a stratified 80/20 split with seed 42: 820 rows for training and 205 for testing. `StandardScaler` learns its means and standard deviations from training data only for the five continuous features; the eight coded features are kept as supplied. No imputation is performed because this file has no missing values.
+The dataset contains 1,025 rows, 13 input features, and no missing cells. The notebook uses a stratified 80/20 split with seed 42, including 820 rows for training and 205 for testing. `StandardScaler` learns its means and standard deviations from training data only for the five continuous features. The eight coded features are kept as supplied. No imputation is performed because this file has no missing values.
 
 It trains logistic regression (LR), Gaussian naive Bayes (NB), k-nearest neighbours (KNN), decision tree (DT), random forest (RF), and XGBoost (XGB). Five-fold out-of-fold predictions from these six models train a logistic-regression stacking model. It reports accuracy, precision, recall, F1 score, AUC, and confusion matrices, and compares the results with Table 11 of the paper. The code uses a probability threshold of 0.5 for class predictions and probabilities for AUC.
 
@@ -74,7 +74,7 @@ The proposed threshold assumes that a missed positive (false negative) costs **f
 | Part 2, 13-feature baseline, mean of ten tests | 0.8345 | 0.8300 | 0.8842 | 0.8522 | 0.9057 |
 | Part 2, proposed version, mean of ten tests | 0.7765 | 0.7231 | 0.9605 | 0.8236 | 0.8925 |
 
-Under the assumed 5:1 costs, mean cost per distinct test profile decreases from 0.4169 for the Part 2 baseline to 0.3093 for the proposed version. Mean missed positives fall from 3.8 to 1.3 per test fold, while false alarms rise from 6.2 to 12.2. Feature selection and calibration did not improve the baseline independently. The main gain in recall and assumed cost comes from the lower threshold; accuracy, precision, F1, AUC, and specificity are lower than for the 13-feature Part 2 baseline.
+Under the assumed 5:1 costs, mean cost per distinct test profile decreases from 0.4169 for the Part 2 baseline to 0.3093 for the proposed version. Mean missed positives fall from 3.8 to 1.3 per test fold, while false alarms rise from 6.2 to 12.2. Feature selection and calibration did not improve the baseline independently. The main gain in recall and assumed cost comes from the lower threshold. Accuracy, precision, F1, AUC, and specificity are lower than for the 13-feature Part 2 baseline.
 
 The paper's figure, the Part 1 single-split result, and the Part 2 cross-validation means come from different evaluation setups. They should not be treated as a controlled head-to-head test. The ten repeated folds reuse profiles, so their scores are not ten independent measurements.
 
