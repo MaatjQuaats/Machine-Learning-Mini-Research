@@ -17,24 +17,25 @@ The notebook reads the dataset with `pd.read_csv('heart.csv')`. Run Jupyter from
 ## Requirements
 
 - Python 3.10 or newer
-- JupyterLab or Jupyter Notebook
-- `numpy`, `pandas`, `matplotlib`, `seaborn`, `scikit-learn`, `xgboost`, and `ipython`
+- VS Code with the Python and Jupyter extensions, or JupyterLab
+- `numpy`, `pandas`, `matplotlib`, `seaborn`, `scikit-learn`, `xgboost`, `ipython`, and `ipykernel`
 
-Install the packages with:
+Install the Python packages with:
 
-```bash
-python -m pip install jupyterlab numpy pandas matplotlib seaborn scikit-learn xgboost ipython
-```
+    python -m pip install numpy pandas matplotlib seaborn scikit-learn xgboost ipython ipykernel
 
-The saved results were generated with scikit-learn 1.8.0 and XGBoost 3.4.1. Other package versions can change model defaults and results. To match these two versions, install `scikit-learn==1.8.0` and `xgboost==3.4.1` in a compatible environment.
+If you want to run JupyterLab in a browser, also install it with:
+
+    python -m pip install jupyterlab
+
+The saved results were generated with scikit-learn 1.8.0 and XGBoost 3.4.1. Other package versions can change model defaults and results. To match these two versions, install `scikit-learn == 1.8.0` and `xgboost == 3.4.1` in a compatible environment.
 
 ## Run the study
 
 1. Put `heart.csv` beside the notebook.
-2. Open the folder in a terminal and run `jupyter lab`.
-3. Open `paper_reproduction_and_extension.ipynb`.
-4. Select a Python kernel with the packages above installed.
-5. Choose **Kernel → Restart Kernel and Run All Cells**. Run the cells from top to bottom; later cells use variables produced earlier.
+2. Open `paper_reproduction_and_extension.ipynb` in VS Code. Alternatively, run `jupyter lab` and open the notebook in your browser.
+3. Select a Python kernel with the packages above installed.
+4. Restart the kernel and run all cells from top to bottom. Later cells use variables produced earlier.
 
 The notebook displays tables and plots directly. The plots are not saved automatically as image files. For a report, export the relevant notebook figures separately.
 
